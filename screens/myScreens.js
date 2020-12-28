@@ -39,7 +39,7 @@ export const NewsScreen = ({navigation}) => {
 
 export const site = () => {
   return (
-    <WebView source={{uri: 'https://infinite.red'}} style={{marginTop: 20}} />
+    <WebView source={{uri: 'https://qafqazinfo.az'}} style={{marginTop: 20}} />
   );
 };
 
@@ -65,9 +65,9 @@ export const EntertainmentsScreen = ({navigation}) => {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'green',
+        backgroundColor: 'gray',
       }}>
-      <Text style={{fontSize: 30, color: 'white'}}>For calculator App</Text>
+      <Text style={{fontSize: 30, color: 'white'}}>For Film catalog</Text>
       <Button title="press" onPress={() => navigation.navigate('Filmen')} />
     </View>
   );

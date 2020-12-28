@@ -1,7 +1,6 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {EntertainmentsScreen, HomeScreen} from '../screens/myScreens';
-import {NewsStack} from '../navigations/newsStack';
+import {HomeScreen} from '../screens/myScreens';
 import {ToolsStack} from './toolsStack';
 import {site} from '../screens/myScreens';
 import {EntertainmentsStack} from '../navigations/entertainmentStack';
@@ -14,9 +13,8 @@ export default Drawer = () => {
       <DrawerScreen.Screen name="Home" component={HomeScreen} />
       <DrawerScreen.Screen name="News" component={site} />
       <DrawerScreen.Screen name="Tools" component={ToolsStack} />
-
-     <DrawerScreen.Screen name="Entertainment" component={EntertainmentsStack} />
-     <DrawerScreen.Screen name="About" component={BottomTab} /> 
+      <DrawerScreen.Screen name="Entertainment" component={EntertainmentsStack} />
+      <DrawerScreen.Screen name="About" component={BottomTab} /> 
 
     </DrawerScreen.Navigator>
   );

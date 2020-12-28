@@ -1,5 +1,4 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
     View,
@@ -10,7 +9,6 @@ import {
     Image,
     TouchableOpacity,
   } from 'react-native';
-import {MaterialCommunityIcons} from 'react-native-vector'
 
 
 const Tab = createBottomTabNavigator(); 
@@ -24,12 +22,6 @@ export const BottomTab = () => {
             <Tab.Screen 
                 name="Profile" 
                 component={ProfileScreen} 
-                // options={{
-                //     tabBarLabel: 'Profile',
-                //     tabBarIcon: ({ color, size }) => (
-                //         <MaterialCommunityIcons name="account" color={blue} size={20} />
-                //     ),
-                // }}
             />
             <Tab.Screen name="Settings" component={SettingsScreen} />
         </Tab.Navigator>
