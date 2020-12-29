@@ -1,6 +1,6 @@
 import React , {Component} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
-import {styles} from '../components';
+import {styles} from '../styles/calcStyles';
 
 class Calculator extends Component {
   constructor(props){

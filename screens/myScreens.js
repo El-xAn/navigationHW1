@@ -6,7 +6,6 @@ import {
   StyleSheet,
   Button,
   Image,
-  TouchableOpacity,
 } from 'react-native';
 import {WebView} from 'react-native-webview';
 
@@ -24,13 +23,8 @@ export const HomeScreen = () => {
 
 export const NewsScreen = ({navigation}) => {
   return (
-    <View style={{flex: 1, alignItems: 'center'}}>
+    <View >
       <View style={{flexDirection: 'column', margin: 10}}>
-        <Image
-          style={{width: 100, height: 50, resizeMode: 'stretch'}}
-          source={require('../components/qafqaz.png')}
-        />
-        {/* <TouchableOpacity onPress={() => navigation.navigate('site')} style={{backgroundColor: 'blue', margin: 5 }}><Text style={{fontSize: 25, color: 'white' }}>Qafqaz Info</Text></TouchableOpacity> */}
         <Button title="press" onPress={() => navigation.navigate('site')} />
       </View>
     </View>

@@ -16,14 +16,13 @@ const Tab = createBottomTabNavigator();
 export const BottomTab = () => {
     return (
         <Tab.Navigator initialRouteName="Feed"
-        tabBarOptions={{
+          tabBarOptions={{
           activeTintColor: '#e91e63',
-        }}>
-            <Tab.Screen 
-                name="Profile" 
-                component={ProfileScreen} 
-            />
+          }}>
+
+            <Tab.Screen name="Profile" component={ProfileScreen} />
             <Tab.Screen name="Settings" component={SettingsScreen} />
+            
         </Tab.Navigator>
     );
 }
