@@ -8,8 +8,8 @@ import logger from "redux-logger";
 const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
-    // blacklist: ['reducerForSearch'],
-    // whitelist: ['reducerForFav']
+    blacklist: ['reducerForSearch'],
+    whitelist: ['reducerForFav']
   }
   
   const persistedReducer = persistReducer(persistConfig, reducer)

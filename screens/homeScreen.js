@@ -6,10 +6,9 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
-  Button,
 } from 'react-native';
 import {styles} from '../styles/filmStyles';
-import {mainScreen} from '../redux/action';
+import {mainScreen, addFavourite} from '../redux/action';
 import {connect} from 'react-redux';
 
 
@@ -19,11 +18,10 @@ class HomeScreen extends Component {
     super(props);
   }
 
-  url = 'http://api.tvmaze.com/search/shows?q=';
   searchText = 'Who';
 
   componentDidMount = () => {
-   this.props.searching(this.url, this.searchText);
+   this.props.searching(this.searchText);
   };
 
   render() {
@@ -39,7 +37,7 @@ class HomeScreen extends Component {
             onChangeText={(text) => (this.searchText = text) } 
           />
 
-          <TouchableOpacity style={styles.searchButton} onPress={()=>this.props.searching(this.url, this.searchText)} >
+          <TouchableOpacity style={styles.searchButton} onPress={()=>this.props.searching(this.searchText)} >
             <Text style={styles.buttonText}>SEARCH</Text>
           </TouchableOpacity>
         </View>
@@ -47,11 +45,11 @@ class HomeScreen extends Component {
         <ScrollView >
           <View style={styles.catalog} >
             {this.props.data.map((movies, index) => {
-              let image = {image} ? {uri: movies.show.image?.medium} : require('../components/placeholder.png')
+              let image = movies.show.image?{uri: movies.show.image?.medium} : require('../components/placeholder.png')
               return (
                 <View key={index}>
-                  <Image style={styles.image} source = { image } />
-                  <TouchableOpacity style={styles.searchButton} onPress={()=> this.props.add(movies)} >
+                  <Image style={styles.image} source = {image} />
+                  <TouchableOpacity style={styles.searchButton} onPress={()=> this.props.add(movies.show)} >
                     <Text style={styles.buttonText}>FAVOURITE</Text>
                   </TouchableOpacity>
                   <Text style={styles.filmName}>{movies.show.name}</Text>
@@ -67,7 +65,7 @@ class HomeScreen extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    searching: (url, text) => dispatch(mainScreen(dispatch, url, text)),
+    searching: (text) => dispatch(mainScreen(dispatch, text)),
     add: (movies) => dispatch(addFavourite(movies))
   };
 };
@@ -75,9 +73,7 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     data: state.reducerForSearch.data,
-    favList: state.reducerForFav.favList
   };
 };
 
-const myConnection = connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
-export default myConnection;
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
