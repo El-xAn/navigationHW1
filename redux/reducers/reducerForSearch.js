@@ -4,7 +4,7 @@ const defaultState = {
 
 export const reducerForSearch = (state = defaultState, action) => {
     switch(action.type) {
-        case 'SEARCH': 
+        case 'ADD': 
             return{
                 ...state,
                 data: action.payload
