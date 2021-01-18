@@ -1,41 +1,11 @@
 import React from 'react';
 import {
   View,
-  ImageBackground,
   Text,
-  StyleSheet,
   Button,
-  Image,
 } from 'react-native';
-import {WebView} from 'react-native-webview';
+import {styles} from '../styles/screensStyles'
 
-const image = {uri: 'https://reactjs.org/logo-og.png'};
-
-export const HomeScreen = () => {
-  return (
-    <View style={styles.container}>
-      <ImageBackground source={image} style={styles.image}>
-        <Text style={styles.text}>Inside</Text>
-      </ImageBackground>
-    </View>
-  );
-};
-
-export const NewsScreen = ({navigation}) => {
-  return (
-    <View >
-      <View style={{flexDirection: 'column', margin: 10}}>
-        <Button title="press" onPress={() => navigation.navigate('site')} />
-      </View>
-    </View>
-  );
-};
-
-export const site = () => {
-  return (
-    <WebView source={{uri: 'https://qafqazinfo.az'}} style={{marginTop: 20}} />
-  );
-};
 
 export const ToolsScreen = ({navigation}) => {
   return (
@@ -74,22 +44,3 @@ export const AboutScreen = () => {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-  },
-  image: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
-  },
-  text: {
-    color: 'white',
-    fontSize: 42,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    backgroundColor: '#000000a0',
-  },
-});

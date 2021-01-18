@@ -7,11 +7,13 @@ import {
   TouchableOpacity,
   Image,
   Button,
+  Modal,
 } from 'react-native';
 import {styles} from '../styles/filmStyles';
 import {filmSearch, addFavourite} from '../redux/action';
+import FirstSplash from './loadScreen'
 import {connect} from 'react-redux';
-
+import NetInfo from '@react-native-community/netinfo';
 
 
 class HomeScreen extends Component {
@@ -21,8 +23,20 @@ class HomeScreen extends Component {
 
   searchText = 'Who';
 
+  netInfo = () => { NetInfo.addEventListener(state => {
+    if(!state.isConnected) {
+        alert('No internet connection !');        
+    }
+  })
+  }
+
   componentDidMount() {
+    this.netInfo(),
     this.props.searching(this.searchText)
+  }
+
+  componentWillUnmount() {
+    this.netInfo()
   }
 
   render() {
@@ -59,7 +73,13 @@ class HomeScreen extends Component {
             })}
           </View>
         </ScrollView>
+        {this.props.state &&
+        <Modal>
+          <FirstSplash /> 
+        </Modal>
+        }
       </View>
+      
     );
   }
 }
@@ -67,13 +87,14 @@ class HomeScreen extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     searching: (text) => dispatch(filmSearch(text)),
-    add: (movies) => dispatch(addFavourite(movies))
+    add: (movies) => dispatch(addFavourite(movies)),
   };
 };
 
 const mapStateToProps = state => {
   return {
     data: state.reducerForSearch.data,
+    state: state.reducerForLoading.state,
   };
 };
 

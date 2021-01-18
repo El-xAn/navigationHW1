@@ -17,7 +17,14 @@ export const BottomTab = () => {
     return (
         <Tab.Navigator initialRouteName="Feed"
           tabBarOptions={{
-          activeTintColor: '#e91e63',
+          activeTintColor: '#fff',
+          inactiveTintColor: 'black',
+          activeBackgroundColor: '#e91e63',
+          labelStyle: {
+            fontSize: 25,
+            fontWeight: 'bold',
+            marginBottom: 5
+          }
           }}>
 
             <Tab.Screen name="Profile" component={ProfileScreen} />

@@ -32,3 +32,10 @@ export const addReducer = (data) => (
     payload: data
   }   
 )
+
+export const loadScreen = (state) => (
+  {
+    type: "LOAD",
+    payload: state
+  }
+)

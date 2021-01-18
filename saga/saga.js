@@ -1,4 +1,4 @@
-import {addReducer} from '../redux/action'
+import {addReducer, loadScreen} from '../redux/action'
 import {put, takeEvery, call} from 'redux-saga/effects'
 
 export function* mainScreenWatcher() {
@@ -6,12 +6,14 @@ export function* mainScreenWatcher() {
 }
 
 export function* mainScreenWorker(action) {
-    const data = yield call(fetchData(action));
-    yield put(addReducer(data));
+
+  yield put(loadScreen(true));
+  const data = yield call(fetchData(action));
+  yield put(loadScreen(false));
+  yield put(addReducer(data));
 }
 
 function fetchData(dispatched) {
-    console.log(dispatched)
     return async () => {
         try {
           const url = `http://api.tvmaze.com/search/shows?q=${dispatched.payload}`;
